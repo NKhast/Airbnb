@@ -54,7 +54,11 @@ app.use((req,res,next)=>{
 app.use(fileUpload());
 
 
-app.use(session({secret: `${process.env.SESSION_SECRET}` , resave: false,saveUninitialized: true}))
+app.use(session({
+    secret: `${process.env.SECRET_KEY}` , 
+    resave: false,
+    saveUninitialized: true
+}))
 
   
 //custom middleware functions
@@ -62,7 +66,7 @@ app.use((req,res,next)=>{
 
     //res.locals.user is a global handlebars variable. This means that ever single handlebars file can access 
     //that user variable
-    res.locals.user = req.session.user;
+    res.locals.user = req.session.userInfo;
     next();
 });
 
@@ -73,9 +77,9 @@ app.use((req,res,next)=>{
 app.use("/",generalRoutes);
 app.use("/user",userRoutes);
 app.use("/room",roomRoutes);
-// app.use("/",(req,res)=>{
-//     res.render("general/404");
-// });
+app.use("/",(req,res)=>{
+    res.render("general/404");
+});
 
 
 

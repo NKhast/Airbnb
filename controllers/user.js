@@ -4,6 +4,8 @@ const router = express.Router();
 const userModel = require("../models/user");
 const path = require("path");
 const bcrypt = require("bcryptjs");
+const isAuthenticated = require("../middleware/auth");
+const dashBoardLoader = require("../middleware/authorization");
 
 
 //Route to direct use to Registration form
@@ -16,7 +18,7 @@ router.get("/signup",(req,res)=>
 router.post("/signup",(req,res)=>
 { 
 
-    const newUser = 
+    const newuser = 
     {
         firstName:req.body.firstName,
         lastName:req.body.lastName,
@@ -24,7 +26,7 @@ router.post("/signup",(req,res)=>
         password:req.body.password
     }
 
-    const user = new userModel(newUser);
+    const user = new userModel(newuser);
     user.save()
     .then((user)=>{
 
@@ -38,7 +40,7 @@ router.post("/signup",(req,res)=>
                 profilePic: req.files.profilePic.name
             })
             .then(()=>{
-                res.redirect(`/user/profile/${user._id}`)
+                res.redirect(`/user/login`)
             })
 
         })
@@ -59,29 +61,16 @@ router.get("/login",(req,res)=>
 //Route to process user's request and data when user submits login form
 router.post("/login",(req,res)=>
 {
-    
-    /*
-        Here is whre we have to determine if the email and the password exists.
-        If it does, create session, assign the user object(document) to session
-        then redirect user
-    */
-
-   /* const formData = {
-        email : req.body.email,
-        password: req.body.password
-    }*/
-
-    //Check to see if the user's email exist in the database
-
-    const errors=[];
 
     userModel.findOne({email:req.body.email})
     .then((user)=>{
 
+        const errors= [];
+
         //there was no matching email
         if(user==null)
         {
-            errors.push("Sorr your email was not found in our database")
+            errors.push("Sorry, your email and/or password incorrect")
 
             res.render("user/login",{
                 errors
@@ -95,9 +84,9 @@ router.post("/login",(req,res)=>
             .then((isMatched)=>{
 
                 //password match
-                if(isMatched==true)
+                if(isMatched)
                 {
-                   req.session.user= user;
+                   req.session.userInfo= user;
 
                    res.redirect("/user/profile")
                 }
@@ -105,7 +94,7 @@ router.post("/login",(req,res)=>
                 //no match
                 else
                 {
-                    errors.push("Sorry your password was wrong!")
+                    errors.push("Sorry, your email and/or password incorrect!")
 
                     res.render("user/login",{
                       errors
@@ -121,18 +110,12 @@ router.post("/login",(req,res)=>
     })
     .catch(err=>console.log(`Error ${err}`));
 
-
-    //res.redirect("/user/profile/")
 });
 
 
 
-router.get("/profile/",(req,res)=>{
+router.get("/profile",isAuthenticated,dashBoardLoader);
 
-
-    res.render("user/userDashboard");
-    
-})
 
 router.get("/logout",(req,res)=>{
 

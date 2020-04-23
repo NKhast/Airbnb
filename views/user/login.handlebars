@@ -1,0 +1,21 @@
+<section class="intro">
+
+    <h1>Start Your <br> Adventure Now!</h1>
+
+</section>
+
+{{#each errors}}
+    <div>
+        {{this}}
+    </div>
+{{/each}}
+<h2>Login User</h2>
+<form action="/user/login" method="POST">
+    <label for="username">Email</label>
+    <input type="text" id="email" name="email"><br><br>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password"> <br><br>
+
+    <input type="submit" value="Login">
+</form>
