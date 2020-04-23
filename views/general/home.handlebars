@@ -1,0 +1,114 @@
+<section class="intro">
+
+    <h1>Start Your <br> Adventure Now!</h1>
+
+    <form id="form" method="POST" action="/room/search" class="search-form">
+        <p>Enter your dates to find available rooms.</p>
+
+        <select class="select" name="location">
+            <option value="">Please select a city</option>
+            <option value="Toronto">Toronto</option>
+            <option value="Banff">Banff</option>
+            <option value="Vancouver">Vancouver</option>
+            <option value="Winnipeg">Winnipeg</option>
+        </select>
+
+        <input type="text" name="checkIn" Placeholder="Check-in" class="date">
+
+        <input type="text" name="checkOut" Placeholder="Check-out" class="date">
+
+        <select class="select" name="guest">
+            <option value="1">1 guest</option>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+            <option value="5">5 guests</option>
+        </select>
+
+        <div id="divButton" class="btn-search">
+            <input type="submit" id="findButton" value="Check" class="search">
+        </div>
+    </form>
+
+</section>
+
+<section class="about-us">
+    <h2>What Do We Offer?</h2>
+    <div class="about-container">
+        <p><i class="fas fa-medal fa-2x"></i> Best Quality</p>
+        <p><i class="fas fa-dollar-sign fa-2x"></i> Hot offers for any budget</p>
+        <p><i class="fas fa-phone-alt fa-2x"></i> 24/7 Support</p>
+        <p><i class="far fa-calendar-check fa-2x"></i> Change Reservation any Time</p>
+        <p><i class="far fa-building fa-2x"></i> Over 10,000 accommodation options</p>
+        <p><i class="fas fa-hand-holding-usd fa-2x"></i> Immidiate Money Refunds</p>
+    </div>
+</section>
+
+<section class="banner">
+    <h2>Enjoy the Most Beautiful Places on Planet Earth</h2>
+    <p>Sign up for our newsletter now to get a special 25% discount on your next trip.</p>
+    <a href="#" class="signup-btn">Sign Up</a>
+</section>
+
+<section id="promotion" class="promotions">
+    <h2>Your Perfect Getaway</h2>
+    <div id="promotionGrid" class="promotions-container">
+        {{#each promotions}}
+        <div class="offer-container">
+            <img src="{{this.image}}" alt="{{this.title}}">
+            <p class="title">{{this.title}}</p>
+            {{!-- <p class="description">{{this.description}}</p> --}}
+            <div class="price-container">
+                <p class="duration"><i class="far fa-clock"></i> {{this.duration}}</p>
+                <p class="price">${{this.price}}</p>
+            </div>
+            <p class="valid">Valid Until {{this.expiration}}</p>
+        </div>
+
+        {{/each}}
+</section>
+
+<section class="informational">
+    <h2>Explore the World</h2>
+    <div class="information-container">
+        <div class="info-grid">
+            <div class="info-img-wrapper">
+                <img src="../img/14.jpg" alt="beach" class="info-img">
+            </div>
+            <div class="info-text">
+                <h3>Start Your Journey</h3>
+                <p>Explore different cities from different perspectives. We have numerous guidelines for you. From
+                    locals tours, tourist experiences and even videos to help you find your way in exploring the world. You can find useful information about others' experiences, which type of transportation is more convinient, special dates and festivals and so much more.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="info-grid">
+            <div class="info-text">
+                <h3>You Can Become a Host Too</h3>
+                <p>We have different host from all over the world willing to offer their place to tourists to make their
+                    stay more pleasant. You can become a host and start earning money. Watch this video for more
+                    information. </p>
+            </div>
+            <div>
+                <iframe src="https://www.youtube.com/embed/05k0LI9UE1U?controls=0"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-img-wrapper">
+                <img src="../img/5.jpg" alt="vacation" class="info-img">
+            </div>
+
+            <div class="info-text">
+                <h3>Tempting Offers Every Week</h3>
+                <p>If you have hesitated to go on a trip and explore the beautiful places due to low budget, we have
+                    wonderful news for you! We have weekly offers and discount that you cannot miss. You can earn points
+                    everytime you book a place and use them for your next trip.</p>
+            </div>
+        </div>
+    </div>
+</section>

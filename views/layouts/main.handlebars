@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <header>
+        {{!-- <h1>{{headingInfo}}</h1> --}}
+
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="#" class="logo"><img src="../img/logo.png" alt="airbnb logo"></a>
+            </div>
+
+            <div class="hamburger-menu">
+                <button>
+                    <i class="fas  fa-2x fa-bars"></i>
+                </button>
+            </div>
+
+
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/room/list">Rooms</a></li>
+                <li><a href="/room/add">Add Rooms</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="/contact-us">Contacts</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">SignUp</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {{!-- <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/contact-us">Contact Us</a></li>
+                <li><a href="/products">Product</a></li>
+            </ul>
+        </nav> --}}
+    <main>
+        {{{body}}}
+    </main>
+    <footer>
+        <div class="footer-wrapper">
+            <ul>
+                <li><a href="#">Diversity &#38; Belonging</a></li>
+                <li><a href="#">Accessibility</a></li>
+                <li><a href="#">Trust &#38; Safety</a></li>
+                <li><a href="#">Airbnb Citizen</a></li>
+                <li><a href="#">Newsroom</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Terms &#38; Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Cancellation</a></li>
+                <li><a href="#">Help Centre</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="#">Host Your Home</a></li>
+                <li><a href="#">Host an Experience</a></li>
+                <li><a href="#">Responsible Hosting</a></li>
+                <li><a href="#">Open Homes</a></li>
+                <li><a href="#">Resource Centre</a></li>
+            </ul>
+
+            <div class="newsletter">
+                <p class="f-heading">Subscribe to Our Newsletter</p>
+                <p>Latest offers, news, blog posts, articles sent straight to your inbox every week.</p>
+                <div class="input-wrapper">
+                    <input type="email" class="subscribe" placeholder="Enter your email">
+                    <button class="subs-btn"><i class="fas fa-arrow-right"></i></button>
+                </div>
+                <p class="social-media"><a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i class="fab fa-twitter"></i></a> <a href="#"><i class="fab fa-instagram"></i></a></p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; Copyright 2020, All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

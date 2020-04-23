@@ -1,0 +1,162 @@
+<section class="intro">
+
+    <h1>Start Your <br> Adventure Now!</h1>
+
+</section>
+
+ {{!-- <div class="filters">
+      <form class="filters" id="filtersForm">
+        <div class="filter-bar">
+          <h2>All Products <span id="resultsnum"></span></h2>
+          <div>
+            <label for="productName">
+              <input type="text" name="find" id="productName" class="search" placeholder="Search products ...">
+            </label>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="radio-container">
+            <label>
+              <label class="category">
+                <input type="radio" name="category" value="all" checked>
+                <span class="all">All Desserts</span>
+              </label>
+              <label class="category cake">
+                <input type="radio" name="category" value="Cake">
+                <span class="cake all">Cakes</span>
+              </label>
+              <label class="category cupcake">
+                <input type="radio" name="category" value="Cupcake">
+                <span class="cupcake all">Cupcakes</span>
+              </label>
+              <label class="category milkshake">
+                <input type="radio" name="category" value="Milkshake">
+                <span class="milkshake all">Milkshakes</span>
+              </label>
+              <label class="category ice-cream">
+                <input type="radio" name="category" value="Ice Cream">
+                <span class="ice-cream all">Ice Creams</span>
+              </label>
+              <label class="category candy">
+                <input type="radio" name="category" value="Candy">
+                <span class="candy all">Candy</span>
+              </label>
+              <label class="category gift">
+                <input type="radio" name="category" value="Gift">
+                <span class="gift all">Gift Box</span>
+              </label>
+            </label>
+          </div>
+      </form>
+    </div>
+
+
+    <div class="sort-container">
+      <div>
+        <select name="sort" id="sortOrder" class="sort">
+          <option value="selected" selected disabled>--Sort By--</option>
+          <option value="priceAsc">Price Low to High</option>
+          <option value="priceDesc">Price High to Low</option>
+          <option value="nameAsc">Name (A-Z)</option>
+          <option value="nameDesc">Name (Z-A)</option>
+          <option value="ratings">Ratings</option>
+        </select>
+
+      </div>
+
+      <div>
+        <button id="layoutView" class="layout-btn">Change Layout</button>
+      </div>
+    </div>
+
+
+
+
+    <section id="results" class="results">
+    </section>
+    <div id="res"></div>
+    <ul id="pag"></ul>
+ --}}
+
+
+{{!-- <section id="promotion" class="promotions">
+    <div id="promotionGrid" class="promotions-container">
+        {{#each rooms}}
+        <div class="offer-container">
+            <img src="{{this.image}}" alt="{{this.title}}">
+            <p class="title">{{this.title}}</p>
+            <div class="price-container">
+                <p class="duration"><i class="far fa-clock"></i> {{this.duration}}</p>
+                <p class="price">${{this.price}}</p>
+            </div>
+            <p class="valid">Valid Until {{this.expiration}}</p>
+        </div>
+
+        {{/each}}
+</section> --}}
+
+<h2>room Dashboard</h2>
+ 
+ <section class="rooms-container">
+   
+
+     <form method="POST" action="/room/search">
+        <label>Search By</label>
+        <select name="room-search">
+                <option value="all">All rooms</option>
+                <option value="open">Open rooms</option>
+                <option value="on-hold">On Hold rooms</option>
+                <option value="closed">Closed rooms</option>
+                <option value="pending">Pending rooms</option>
+                <option value="low-priority">Low Priority</option>
+                <option value="medium-priority">Meidum Priority</option>
+                <option value="high-priority">High Priority</option>
+        </select>
+        <input type="submit" value="Search">
+     </form> <br><br>
+
+    <table border="1" style="text-align: center;">
+        <thead>
+                <th>Title</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Due Date</th>
+                <th>Operation</th>
+        </thead>
+        <tbody>
+            {{#each data}}
+                <tr>
+                   <td>
+                        <a href="" class="room-title">{{this.title}}</a>
+                   </td>
+                   <td>
+                       <span>{{this.priority}}</span>
+                      
+                   </td>
+                   <td>
+                        <span>{{this.status}}</span>
+                   </td>
+                   <td>
+                       <span>{{this.dueDate}}</span>
+                   </td>
+                   <td>
+                        <a href="/room/edit/{{this.id}}" class="edit-delete-button">Edit</a>
+                        <a href="/room/delete/{{this.id}}?method=DELETE" class="edit-delete-button">Delete</a>
+                   </td> 
+                </tr>
+
+                {{else}}
+                    <td colspan="5">
+                        <p>No rooms in the database</p>
+                    </td>
+
+                {{/each}}
+    </tbody>
+    </table>
+ 
+</section>
+
+<div id="rooms-links-holder">
+    <a href="/room/add">Add a room</a>
+</div>
