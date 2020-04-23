@@ -157,7 +157,7 @@ router.put("/update/:id",(req,res)=>{
 
     roomModel.updateOne({_id:req.params.id},room)
     .then(()=>{
-        res.redirect("/rooms/list");
+        res.redirect("/room/list");
     })
     .catch(err=>console.log(`Error happened when updating data from the database :${err}`));
 
@@ -169,7 +169,7 @@ router.delete("/delete/:id",(req,res)=>{
     
     roomModel.deleteOne({_id:req.params.id})
     .then(()=>{
-        res.redirect("/rooms/list");
+        res.redirect("/room/list");
     })
     .catch(err=>console.log(`Error happened when updating data from the database :${err}`));
 

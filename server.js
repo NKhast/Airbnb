@@ -70,9 +70,9 @@ app.use((req,res,next)=>{
 
 
 //MAPs EXPRESS TO ALL OUR  ROUTER OBJECTS
-// app.use("/",generalRoutes);
-// app.use("/user",userRoutes);
-// app.use("/room",roomRoutes);
+app.use("/",generalRoutes);
+app.use("/user",userRoutes);
+app.use("/room",roomRoutes);
 // app.use("/",(req,res)=>{
 //     res.render("general/404");
 // });
