@@ -38,6 +38,7 @@
 const express = require('express')
 const router = express.Router();
 const roomModel  = require("../models/room");
+const path = require("path");
 
 
 //Route to direct use to Add room form
@@ -48,12 +49,12 @@ router.get("/add",(req,res)=>
 
 //Route to process user's request and data when the user submits the add room form
 router.post("/add",(req,res)=>
-{
-        const newUser = {
+{ 
+        const newRoom = {
             title : req.body.title,
             description : req.body.description,
             dueDate : req.body.dueDate,
-            priority : req.body.priority
+            priority : req.body.priority,
         }
 
              /*
@@ -61,12 +62,28 @@ router.post("/add",(req,res)=>
         1. YOu have to create an instance of the model, you must pass data that you want inserted
          in the form of an object(object literal)
         2. From the instance, you call the save method
+
      */
 
-     const room =  new roomModel(newUser);
+
+     const room =  new roomModel(newRoom);
      room.save()
-     .then(()=>{
-         res.redirect("/room/list")
+    .then((room)=>{
+        
+        req.files.roomPic.name = `room_pic_${room._id}${path.parse(req.files.roomPic.name).ext}`;
+
+        req.files.roomPic.mv(`public/uploads/${req.files.roomPic.name}`)
+        .then(()=>{
+
+
+            roomModel.updateOne({_id:room._id},{
+                roomPic: req.files.roomPic.name
+            })
+            .then(()=>{
+                res.redirect(`/room/list`)
+            })
+
+        }) 
      })
      .catch(err=>console.log(`Error happened when inserting in the database :${err}`));
 });
@@ -114,9 +131,26 @@ router.get("/list",(req,res)=>
 });
 
 //Route to direct user to the room profile page
-router.get("/description",(req,res)=>{
 
-    
+router.get("/profile/:id",(req,res)=>{
+
+    roomModel.findById(req.params.id)
+    .then((room)=>{
+
+        const {_id,title,description,dueDate,priority,roomPic,status} = room;
+        res.render("rooms/roomProfile",{
+            _id,
+            title,
+            description,
+            dueDate,
+            priority,
+            roomPic,
+            status  
+        })
+
+    })
+    .catch(err=>console.log(`Error happened when pulling from the database :${err}`));
+
 
 })
 

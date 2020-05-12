@@ -57,6 +57,11 @@ const Schema = mongoose.Schema;
         type:String,
         required:true
     },
+    roomPic:
+    {
+        type:String
+    },
+
     status:
     {
         type:String,

@@ -87,8 +87,8 @@ select {
     padding: 0.4em;
 }
 
-.date {
-    background-image:url('../img/calendar.png');
+.date, input {
+    /* background-image:url('../img/calendar.png'); */
     background-position: 5% 50%;
     background-repeat: no-repeat;
     background-size: 1em;
@@ -97,7 +97,7 @@ select {
     padding: 0.5em;
 }
 
-.date::placeholder {
+.date::placeholder , input::placeholder{
     padding-left: 1.5em;
 }
 
@@ -105,7 +105,7 @@ select {
     display: inline-block
 }
 
-.search {
+.search, .btn {
     background-color: #EE875E;
     color: white;
     font-weight: bold;
@@ -114,20 +114,28 @@ select {
     margin-left: 1em;
 }
 
-.search:hover {
+.search:hover, .btn:hover {
     background-color: rgb(245, 103, 47);
     cursor: pointer;
 }
 
-.search-form {
+.search-form, form {
     margin-top: 2em;
     padding: 1em;
     background-color: rgba(178, 144, 54,0.7);
     display: inline-block;
 }
 
-.search-form p {
+.search-form p, form p {
     margin-bottom: 1em;
+}
+
+/* ***********************************
+            LOGIN SECTION
+*************************************/
+.login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 /* ***********************************

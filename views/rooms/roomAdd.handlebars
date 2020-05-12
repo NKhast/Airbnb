@@ -6,7 +6,7 @@
 
 <h2>Add room</h2>
     
-    <form method="POST" action="/room/add">
+    <form method="POST" action="/room/add" enctype="multipart/form-data">
 
         <label>Title</label>
         <input type="text" name="title" id="title"> <br><br>
@@ -25,12 +25,8 @@
         </select>
         <br><br>
 
-        <label>Status</label> : Open
-       <!-- <select name="status">
-            <option value="open">Open</option>
-            <option value="hold">On Hold</option>
-            <option value="completed">Completed</option>
-        </select>-->
+        <label>File Upload</label>
+        <input type="file" name="roomPic" id="roomPic"> <br><br>
         <br><br>
 
         <input type="submit" value="Add room">

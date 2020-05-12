@@ -1,23 +1,19 @@
-<main> 
-    <div>
-        Title :
-    </div> 
+<section class="intro">
 
-    <div>
-        Description : 
-    </div>
+    <h1>Start Your <br> Adventure Now!</h1>
 
-    <div>
-        Date Due :
-    </div>
-    `
-    <div>
-        Priority : 
-    </div>
+</section>
 
-    <div>
-        Status : 
-    </div>
-
-
-</main>
+<section id="promotion" class="promotions">
+    <div id="promotionGrid" class="promotions-container">
+        <div class="offer-container">
+            {{!-- {{this.roomPic}} --}}
+            <img src="/uploads/{{this.roomPic}}" alt="{{this.title}}">
+            <p class="title">{{this.title}}</p>
+            <div class="price-container">
+                <p class="duration"><i class="far fa-clock"></i> {{this.description}}</p>
+                <p class="price">${{this.priority}}</p>
+            </div>
+            <p class="valid">Valid Until {{this.dueDate}}</p>
+        </div>
+</section>

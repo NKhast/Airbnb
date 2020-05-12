@@ -1,21 +1,22 @@
-<section class="intro">
+<section class="intro login">
 
     <h1>Start Your <br> Adventure Now!</h1>
 
-</section>
-
-{{#each errors}}
+    {{!-- {{#each errors}}
     <div>
         {{this}}
     </div>
-{{/each}}
-<h2>Login User</h2>
-<form action="/user/login" method="POST">
-    <label for="username">Email</label>
-    <input type="text" id="email" name="email"><br><br>
+{{/each}} --}}
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password"> <br><br>
+<div>
+    <form action="/user/login" method="POST">
+    <h2>Login User</h2>
+    <input type="text" id="email" name="email" placeholder="Enter your email"><br><br>
 
-    <input type="submit" value="Login">
+    <input type="password" id="password" name="password" placeholder="Enter your password"> <br><br>
+
+    <input type="submit" value="Login" class="btn">
 </form>
+</div>
+
+</section>
