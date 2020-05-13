@@ -47,6 +47,50 @@ router.get("/add",(req,res)=>
     res.render("rooms/roomAdd");
 });
 
+//Featured Rooms
+router.get("/featured-rooms",(req,res)=>
+{
+    //pull from the database , get the results that was returned and then inject that results into
+    //the roomDashboard
+
+    roomModel.find({ featuredRoom: "Yes" })
+    .then((rooms)=>{
+
+
+        //Filter out the information that you want from the array of documents that was returned into
+        //a new array
+
+        //Array 300 documents meaning that the array has 300 elements 
+
+  
+        const featuredRoom =   rooms.map(room=>{
+
+                return {
+
+                    id: room._id,
+                    title:room.title,
+                    description:room.description,
+                    dueDate :room.dueDate,
+                    status : room.status,
+                    featuredRoom : room.featuredRoom,
+                    roomPic : room.roomPic,
+                    price : room.price
+                }
+        });
+
+
+
+        res.render("rooms/featuredRooms",{
+           data : featuredRoom
+        });
+
+    })
+    .catch(err=>console.log(`Error happened when pulling from the database :${err}`));
+
+    
+  
+});
+
 //Route to process user's request and data when the user submits the add room form
 router.post("/add",(req,res)=>
 { 
@@ -54,7 +98,7 @@ router.post("/add",(req,res)=>
             title : req.body.title,
             description : req.body.description,
             dueDate : req.body.dueDate,
-            priority : req.body.priority,
+            featuredRoom : req.body.featuredRoom,
             price : req.body.price
         }
 
@@ -114,7 +158,7 @@ router.get("/list",(req,res)=>
                     description:room.description,
                     dueDate :room.dueDate,
                     status : room.status,
-                    priority : room.priority,
+                    featuredRoom : room.featuredRoom,
                     roomPic : room.roomPic,
                     price : room.price
                 }
@@ -137,38 +181,38 @@ router.get("/list",(req,res)=>
   
 });
 
-// router.get("/dashboard",(req,res)=>
-// {
+router.get("/dashboard",(req,res)=>
+{
 
-//     roomModel.find()
-//     .then((rooms)=>{
+    roomModel.find()
+    .then((rooms)=>{
 
   
-//         const filteredRoom =   rooms.map(room=>{
+        const filteredRoom =   rooms.map(room=>{
 
-//                 return {
+                return {
 
-//                     id: room._id,
-//                     title:room.title,
-//                     description:room.description,
-//                     dueDate :room.dueDate,
-//                     status : room.status,
-//                     priority : room.priority
-//                 }
-//         });
+                    id: room._id,
+                    title:room.title,
+                    description:room.description,
+                    dueDate :room.dueDate,
+                    status : room.status,
+                    featuredRoom : room.featuredRoom
+                }
+        });
 
 
 
-//         res.render("rooms/roomDashboard",{
-//            data : filteredRoom
-//         });
+        res.render("rooms/roomDashboard",{
+           data : filteredRoom
+        });
 
-//     })
-//     .catch(err=>console.log(`Error happened when pulling from the database :${err}`));
+    })
+    .catch(err=>console.log(`Error happened when pulling from the database :${err}`));
 
     
   
-// });
+});
 
 
 //Route to direct user to the room profile page
@@ -178,13 +222,13 @@ router.get("/profile/:id",(req,res)=>{
     roomModel.findById(req.params.id)
     .then((room)=>{
 
-        const {_id,title,description,dueDate,priority,roomPic,status,price} = room;
+        const {_id,title,description,dueDate,featuredRoom,roomPic,status,price} = room;
         res.render("rooms/roomProfile",{
             _id,
             title,
             description,
             dueDate,
-            priority,
+            featuredRoom,
             roomPic,
             status,
             price
@@ -202,13 +246,13 @@ router.get("/edit/:id",(req,res)=>{
     roomModel.findById(req.params.id)
     .then((room)=>{
 
-        const {_id,title,description,dueDate,priority,status,price} = room;
+        const {_id,title,description,dueDate,featuredRoom,status,price} = room;
         res.render("rooms/roomEdit",{
             _id,
             title,
             description,
             dueDate,
-            priority,
+            featuredRoom,
             status,
             price
         })
@@ -229,7 +273,7 @@ router.put("/update/:id",(req,res)=>{
         description:req.body.description,
         dueDate:req.body.dueDate,
         status:req.body.status,
-        priority:req.body.priority,
+        featuredRoom:req.body.featuredRoom,
         price:req.body.price
     }
 

@@ -4,20 +4,22 @@
 
 </section>
 
-<section id="promotion" class="promotions">
-    <h2>Featured Rooms</h2>
-    <div id="promotionGrid" class="promotions-container">
-        {{#each featuredRooms}}
-        <div class="offer-container">
-            <img src="{{this.image}}" alt="{{this.title}}">
-            <p class="title">{{this.title}}</p>
-            <p class="description">{{this.description}}</p>
-            <div class="price-container">
-                <p class="duration"><i class="far fa-clock"></i> {{this.duration}}</p>
-                <p class="price">${{this.price}}</p>
-            </div>
-            <p class="valid">Valid Until {{this.expiration}}</p>
-        </div>
+<h2>Featured Rooms</h2>
 
-        {{/each}}
+<section id="promotion" class="promotions">
+  <div id="promotionGrid" class="promotions-container">
+    {{#each data}}
+    <div class="offer-container">
+      <a href="/room/profile/{{this.id}}" class="room-title">
+      <img src="/uploads/{{this.roomPic}}" alt="{{this.title}}">
+      <p class="title">{{this.title}}</p>
+      <div class="price-container">
+        {{!-- <p class="duration"><i class="far fa-clock"></i> {{this.dueDate}}</p> --}}
+        <p class="price">${{this.price}}</p>
+      </div>
+      <p class="valid">Valid Until {{this.dueDate}}</p>
+      </a>
+    </div>
+
+    {{/each}}
 </section>

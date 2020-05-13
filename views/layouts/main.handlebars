@@ -28,12 +28,13 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/room/list">Rooms</a></li>
                 <li><a href="/room/add">Add Rooms</a></li>
-                <li><a href="/featured-rooms">Featured Rooms</a></li>
+                <li><a href="/room/featured-rooms">Featured Rooms</a></li>
                 <li><a href="/contact-us">Contact Us</a></li>
             </ul>
 
             <ul>
                 {{#if user }}
+                <li><a href="/user/profile">Dashboard</a></li>
                 <li><a href="/user/logout">Logout</a></li>
                 {{else}}
                 <li><a href="/user/signup">SignUp</a></li>

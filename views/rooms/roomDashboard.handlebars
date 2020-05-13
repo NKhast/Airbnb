@@ -16,9 +16,7 @@
                 <option value="on-hold">On Hold rooms</option>
                 <option value="closed">Closed rooms</option>
                 <option value="pending">Pending rooms</option>
-                <option value="low-priority">Low Priority</option>
-                <option value="medium-priority">Meidum Priority</option>
-                <option value="high-priority">High Priority</option>
+                <option value="featuredRoom">Featured Room</option>
         </select>
         <input type="submit" value="Search">
      </form> <br><br>
@@ -26,7 +24,7 @@
     <table border="1" style="text-align: center;">
         <thead>
                 <th>Title</th>
-                <th>Priority</th>
+                <th>featuredRoom</th>
                 <th>Status</th>
                 <th>Due Date</th>
                 <th>Operation</th>
@@ -38,7 +36,7 @@
                         <a href="/room/profile/{{this.id}}" class="room-title">{{this.title}}</a>
                    </td>
                    <td>
-                       <span>{{this.priority}}</span>
+                       <span>{{this.featuredRoom}}</span>
                       
                    </td>
                    <td>

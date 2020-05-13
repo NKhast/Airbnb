@@ -12,7 +12,7 @@
 <table border="1" style="text-align: center;">
         <thead>
                 <th>Title</th>
-                <th>Priority</th>
+                <th>featuredRoom</th>
                 <th>Status</th>
                 <th>Due Date</th>
                 <th>Operation</th>
@@ -21,10 +21,10 @@
             {{#each data}}
                 <tr>
                    <td>
-                        <a href="/room/profile" class="room-title">{{this.title}}</a>
+                        <a href="/room/profile/{{this.id}}" class="room-title">{{this.title}}</a>
                    </td>
                    <td>
-                       <span>{{this.priority}}</span>
+                       <span>{{this.featuredRoom}}</span>
                       
                    </td>
                    <td>
@@ -32,6 +32,9 @@
                    </td>
                    <td>
                        <span>{{this.dueDate}}</span>
+                   </td>
+                   <td>
+                       <span>{{this.price}}</span>
                    </td>
                    <td>
                         <a href="/room/edit/{{this.id}}" class="edit-delete-button">Edit</a>
@@ -50,4 +53,8 @@
 
 <div id="rooms-links-holder">
   <a href="/room/add">Add a room</a>
+</div>
+
+<div id="rooms-links-holder">
+  <a href="/room/dashboard">Add a room</a>
 </div>
