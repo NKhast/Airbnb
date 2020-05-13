@@ -71,7 +71,12 @@ const Schema = mongoose.Schema;
     {
         type:Date,
         default:Date.now()
+    },
+    price:
+    {
+      type:Number
     }
+
   });
 
   /*

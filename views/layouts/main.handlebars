@@ -12,8 +12,6 @@
 
 <body>
     <header>
-        {{!-- <h1>{{headingInfo}}</h1> --}}
-
         <nav class="navbar">
             <div class="logo-container">
                 <a href="#" class="logo"><img src="../img/logo.png" alt="airbnb logo"></a>
@@ -30,26 +28,21 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/room/list">Rooms</a></li>
                 <li><a href="/room/add">Add Rooms</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="/contact-us">Contacts</a></li>
+                <li><a href="/featured-rooms">Featured Rooms</a></li>
+                <li><a href="/contact-us">Contact Us</a></li>
             </ul>
 
             <ul>
-                <li><a href="/user/login">Login</a></li>
-                <li><a href="/user/signup">SignUp</a></li>
+                {{#if user }}
                 <li><a href="/user/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/user/signup">SignUp</a></li>
+                <li><a href="/user/login">Login</a></li>
+                {{/if}}
             </ul>
         </nav>
     </header>
 
-    {{!-- <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/contact-us">Contact Us</a></li>
-                <li><a href="/products">Product</a></li>
-            </ul>
-        </nav> --}}
     <main>
         {{{body}}}
     </main>
@@ -86,7 +79,8 @@
                     <input type="email" class="subscribe" placeholder="Enter your email">
                     <button class="subs-btn"><i class="fas fa-arrow-right"></i></button>
                 </div>
-                <p class="social-media"><a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i class="fab fa-twitter"></i></a> <a href="#"><i class="fab fa-instagram"></i></a></p>
+                <p class="social-media"><a href="#"><i class="fab fa-facebook-f"></i></a> <a href="#"><i
+                            class="fab fa-twitter"></i></a> <a href="#"><i class="fab fa-instagram"></i></a></p>
             </div>
         </div>
 

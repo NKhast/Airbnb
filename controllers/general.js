@@ -1,8 +1,13 @@
 const express = require('express')
 const router = express.Router();
+const isLoggedIn = require("../middleware/auth");
+const dashBoardLoader = require("../middleware/authorization")
 
 //Promotion Model
 const promotionModel = require("../models/promotions");
+
+//Featured Rooms Model
+const featuredRoomsModel = require("../models/featuredRooms");
 
 //Home
 router.get("/", (req, res) => {
@@ -20,6 +25,22 @@ router.get("/contact-us", (req, res) => {
 
     res.render("general/contactus", {
         title: "Contact Us Page"
+    });
+
+});
+
+
+// Admin Dashboard
+router.get("/admin-dashboard", isLoggedIn, dashBoardLoader, (req, res) => {
+    res.render("../views/user/adminDashboard")
+})
+
+//Featured Rooms
+router.get("/featured-rooms", (req, res) => {
+
+    res.render("rooms/featuredRooms", {
+        title: "Featured Rooms Page",
+        featuredRooms: featuredRoomsModel.getAllllFeaturedRooms()
     });
 
 });

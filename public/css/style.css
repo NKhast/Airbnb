@@ -19,6 +19,10 @@ header {
     width: 100%;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* ***********************************
                 NAVBAR
 *************************************/
@@ -276,7 +280,7 @@ h2{
     width: 100%;
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap:1.3em;
 
     cursor: pointer;
@@ -292,8 +296,8 @@ h2{
 }
 
 .promotions-container img{
-    width:18em;
-    height: 15em;
+    width:90%;
+    height: 18em;
     border: 0px solid transparent;
     border-radius: 1em;
     box-shadow: 0 0 0.5em grey;
